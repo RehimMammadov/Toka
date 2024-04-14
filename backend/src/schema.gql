@@ -1,0 +1,63 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Category {
+  """ID of the category"""
+  id: String!
+
+  """Title of the category"""
+  title: String!
+}
+
+type Game {
+  """Example field (placeholder)"""
+  id: String!
+
+  """Example field (placeholder)"""
+  title: String!
+
+  """Title of the category"""
+  description: String!
+
+  """Title of the category"""
+  createdCompany: String!
+
+  """Title of the category"""
+  price: Int!
+
+  """Title of the category"""
+  discountPrice: Int!
+
+  """Title of the category"""
+  categoryId: String!
+}
+
+type Query {
+  categories: [Category!]!
+  category(id: String!): Category!
+  games: [Game!]!
+  game(id: String!): Game!
+}
+
+type Mutation {
+  createCategory(dto: CategoryDto!): Category!
+  updateCategory(id: String!, dto: CategoryDto!): Category!
+  removeCategory(id: String!): Category!
+  createGame(dto: GameDto!): Game!
+  updateGame(dto: GameDto!, id: String!): Game!
+  removeGame(id: String!): Game!
+}
+
+input CategoryDto {
+  title: String!
+}
+
+input GameDto {
+  title: String!
+  description: String!
+  createdCompany: String!
+  price: Float!
+  discountPrice: Float!
+  category: String!
+}

@@ -1,0 +1,134 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  firstName String @map("firstname")
+  lastName String @map("lastname")
+  userName String? @unique @map("username") 
+  age Int?
+  email String @unique
+  password String
+  orders Order[]
+}
+
+model Category {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  title String
+  product Product[]
+}
+
+model Product {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  title String
+  description String?
+  price Int
+  images String[]
+  discountPrice Int?
+  category Category? @relation(fields: [categoryId], references: [id])
+  categoryId String
+  orders OrderItem[]
+}
+
+model Logo {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  title String
+}
+
+model NFT_Creater {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  fullName String
+  email String
+  nft NFT[]
+}
+
+model NFT {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  title String
+  image String
+  price Int
+  creator NFT_Creater? @relation(fields: [createrId], references: [id])
+  createrId String
+}
+
+model Contact {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  name String
+  email String @unique
+  message String
+}
+
+model Team {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  fullName String
+  image String
+  job_title String
+  instagram String?
+  linkedin String?
+  facebook String?
+}
+
+model Partners {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  logo String
+  link String?
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  status EnumOrderStatus @default(PENDING)
+  item OrderItem[]
+  user User? @relation(fields: [userId], references: [id])
+  userId String? @map("user_id")
+}
+
+model OrderItem {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  quantity Int
+  price Int
+  Order Order? @relation(fields: [orderId], references: [id])
+  orderId Int?  @map("order_id")
+  product Product? @relation(fields: [productId], references: [id])
+  productId String? @map("product_id")
+}
+
+enum EnumOrderStatus {
+  PENDING
+  PAYED
+  SHIPPED 
+  DELIVERED
+}
