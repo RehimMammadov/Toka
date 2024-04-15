@@ -6,5 +6,5 @@ export class LogoDto {
     @Field()
     @IsString()
     @IsNotEmpty()
-    logo: string
+    title: string
 }

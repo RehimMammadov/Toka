@@ -1,26 +1,41 @@
 import { Injectable } from '@nestjs/common';
-import { CreateLogoInput } from './dto/create-logo.input';
-import { UpdateLogoInput } from './dto/update-logo.input';
+import { LogoDto } from './dto/logo.dto';
+import { PrismaService } from 'prisma/prisma.service';
 
 @Injectable()
 export class LogoService {
-  create(createLogoInput: CreateLogoInput) {
-    return 'This action adds a new logo';
+  constructor(private prismaService: PrismaService) {}
+
+  create(dto: LogoDto) {
+    return this.prismaService.logo.create({
+      data: {
+        title: dto.title
+      }
+    })
   }
 
   findAll() {
-    return `This action returns all logo`;
+    return this.prismaService.logo.findMany()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} logo`;
+  findOne(id: string) {
+    return this.prismaService.logo.findUnique({
+      where: { id }
+    })
   }
 
-  update(id: number, updateLogoInput: UpdateLogoInput) {
-    return `This action updates a #${id} logo`;
+  update(id: string, dto: LogoDto) {
+    return this.prismaService.logo.update({
+      where: { id },
+      data: {
+        title: dto.title
+      }
+    })
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} logo`;
+  remove(id: string) {
+    return this.prismaService.logo.delete({
+      where: { id }
+    })
   }
 }

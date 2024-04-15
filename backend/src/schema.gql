@@ -10,54 +10,34 @@ type Category {
   title: String!
 }
 
-type Game {
-  """Example field (placeholder)"""
+type Logo {
+  """ID of the logo"""
   id: String!
 
-  """Example field (placeholder)"""
+  """Title of the logo"""
   title: String!
-
-  """Title of the category"""
-  description: String!
-
-  """Title of the category"""
-  createdCompany: String!
-
-  """Title of the category"""
-  price: Int!
-
-  """Title of the category"""
-  discountPrice: Int!
-
-  """Title of the category"""
-  categoryId: String!
 }
 
 type Query {
   categories: [Category!]!
   category(id: String!): Category!
-  games: [Game!]!
-  game(id: String!): Game!
+  logos: [Logo!]!
+  logo(id: String!): Logo!
 }
 
 type Mutation {
   createCategory(dto: CategoryDto!): Category!
   updateCategory(id: String!, dto: CategoryDto!): Category!
   removeCategory(id: String!): Category!
-  createGame(dto: GameDto!): Game!
-  updateGame(dto: GameDto!, id: String!): Game!
-  removeGame(id: String!): Game!
+  createLogo(dto: LogoDto!): Logo!
+  updateLogo(dto: LogoDto!, id: String!): Logo!
+  removeLogo(id: String!): Logo!
 }
 
 input CategoryDto {
   title: String!
 }
 
-input GameDto {
+input LogoDto {
   title: String!
-  description: String!
-  createdCompany: String!
-  price: Float!
-  discountPrice: Float!
-  category: String!
 }

@@ -12,7 +12,7 @@ import { LogoModule } from './logo/logo.module';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), "src/graphql/schema.gql")
+      autoSchemaFile: join(process.cwd(), "src/schema.gql")
     }),
     ConfigModule.forRoot(),
     AuthModule,
