@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { LogoService } from './logo.service';
 import { Logo } from './entities/logo.entity';
 import { LogoDto } from './dto/logo.dto';
