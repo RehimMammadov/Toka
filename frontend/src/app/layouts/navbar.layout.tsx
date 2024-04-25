@@ -37,7 +37,7 @@ export default function Navbar() {
   const fetchData = async () => {
     try {
       const response = await axios.post(apiUrl, {
-        query: `
+        query:  `
                     query {
                         logos {
                             id, 
