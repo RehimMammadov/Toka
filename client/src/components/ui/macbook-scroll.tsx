@@ -1,20 +1,34 @@
 "use client";
-
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/utils/cn";
-import { IconBrightnessDown, IconBrightnessUp, IconCaretRightFilled, IconCaretUpFilled, IconChevronUp, IconMicrophone, IconMoon, IconPlayerSkipForward, IconPlayerTrackNext, IconPlayerTrackPrev, IconTable, IconVolume, IconVolume2, IconVolume3 } from "@tabler/icons-react";
+import {
+  IconBrightnessDown,
+  IconBrightnessUp,
+  IconCaretRightFilled,
+  IconCaretUpFilled,
+  IconChevronUp,
+  IconMicrophone,
+  IconMoon,
+  IconPlayerSkipForward,
+  IconPlayerTrackNext,
+  IconPlayerTrackPrev,
+  IconTable,
+  IconVolume,
+  IconVolume2,
+  IconVolume3,
+} from "@tabler/icons-react";
 import { IconSearch } from "@tabler/icons-react";
 import { IconWorld } from "@tabler/icons-react";
 import { IconCommand } from "@tabler/icons-react";
 import { IconCaretLeftFilled } from "@tabler/icons-react";
 import { IconCaretDownFilled } from "@tabler/icons-react";
 import Image from "next/image";
-import MacInterfase from "@/assets/Transactions-efg.png"
 
 export const MacbookScroll = ({
   src,
   showGradient,
+  title,
   badge,
 }: {
   src?: string;
@@ -54,7 +68,7 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className="min-h-[20vh]  flex flex-col items-center py-0 md:py-80 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50"
+      className="min-h-[200vh]  flex flex-col items-center py-0 md:py-80 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50"
     >
       <motion.h2
         style={{
@@ -63,6 +77,11 @@ export const MacbookScroll = ({
         }}
         className="dark:text-white text-neutral-800 text-3xl font-bold mb-20 text-center"
       >
+        {title || (
+          <span>
+            This Macbook is built with Tailwindcss. <br /> No kidding.
+          </span>
+        )}
       </motion.h2>
       {/* Lid */}
       <Lid
@@ -72,9 +91,9 @@ export const MacbookScroll = ({
         rotate={rotate}
         translate={translate}
       />
-
-      <div className="h-[22rem] w-[32rem] bg-[#fff] dark:bg-[#272729] rounded-2xl overflow-hidden relative -z-10">
-
+      {/* Base area */}
+      <div className="h-[22rem] w-[32rem] bg-gray-200 dark:bg-[#272729] rounded-2xl overflow-hidden relative -z-10">
+        {/* above keyboard bar */}
         <div className="h-10 w-full relative">
           <div className="absolute inset-x-0 mx-auto w-[80%] h-4 bg-[#050505]" />
         </div>
@@ -91,10 +110,10 @@ export const MacbookScroll = ({
         </div>
         <Trackpad />
         <div className="h-2 w-20 mx-auto inset-x-0 absolute bottom-0 bg-gradient-to-t from-[#272729] to-[#050505] rounded-tr-3xl rounded-tl-3xl" />
-        { showGradient && (
+        {showGradient && (
           <div className="h-40 w-full absolute bottom-0 inset-x-0 bg-gradient-to-t dark:from-black from-white via-white dark:via-black to-transparent z-50"></div>
         )}
-        { badge && <div className="absolute bottom-4 left-4">{badge}</div>}
+        {badge && <div className="absolute bottom-4 left-4">{badge}</div>}
       </div>
     </div>
   );
@@ -130,7 +149,7 @@ export const Lid = ({
           className="absolute inset-0 bg-[#010101] rounded-lg flex items-center justify-center"
         >
           <span className="text-white">
-            {/* <AceternityLogo /> */}
+            <AceternityLogo />
           </span>
         </div>
       </div>
@@ -147,7 +166,7 @@ export const Lid = ({
       >
         <div className="absolute inset-0 bg-[#272729] rounded-lg" />
         <Image
-          src={MacInterfase}
+          src={src as string}
           alt="aceternity logo"
           fill
           className="object-cover object-left-top absolute rounded-lg inset-0 h-full w-full"
@@ -626,23 +645,23 @@ export const OptionKey = ({ className }: { className: string }) => {
   );
 };
 
-// const AceternityLogo = () => {
-//   return (
-//     <svg
-//       width="66"
-//       height="65"
-//       viewBox="0 0 66 65"
-//       fill="none"
-//       xmlns="http://www.w3.org/2000/svg"
-//       className="h-3 w-3 text-white"
-//     >
-//       <path
-//         d="M8 8.05571C8 8.05571 54.9009 18.1782 57.8687 30.062C60.8365 41.9458 9.05432 57.4696 9.05432 57.4696"
-//         stroke="currentColor"
-//         strokeWidth="15"
-//         strokeMiterlimit="3.86874"
-//         strokeLinecap="round"
-//       />
-//     </svg>
-//   );
-// };
+const AceternityLogo = () => {
+  return (
+    <svg
+      width="66"
+      height="65"
+      viewBox="0 0 66 65"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-3 w-3 text-white"
+    >
+      <path
+        d="M8 8.05571C8 8.05571 54.9009 18.1782 57.8687 30.062C60.8365 41.9458 9.05432 57.4696 9.05432 57.4696"
+        stroke="currentColor"
+        strokeWidth="15"
+        strokeMiterlimit="3.86874"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+};

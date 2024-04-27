@@ -15,7 +15,7 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { FaRegHeart } from 'react-icons/fa';
 import { BsCart2 } from 'react-icons/bs';
-import { apiUrl } from '../../api/api.js';
+import { apiUrl } from '../../../client/src/api/api.js';
 import Link from 'next/link.js';
 import axios from 'axios';
 import { FaChevronDown } from 'react-icons/fa6';
