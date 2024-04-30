@@ -58,7 +58,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="w-full p-10 pl-52 pr-52 flex justify-between items-center absolute top-0 left-0">
+      <nav className="w-full p-10 pl-32 pr-32 flex justify-between items-center fixed top-0 left-0 bg-[#030811] z-10">
         {logos &&
           logos.map((logo) => (
             <h5 className="text-3xl font-extrabold text-white" key={logo.id}>

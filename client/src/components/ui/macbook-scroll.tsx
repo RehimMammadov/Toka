@@ -23,13 +23,10 @@ import { IconWorld } from "@tabler/icons-react";
 import { IconCommand } from "@tabler/icons-react";
 import { IconCaretLeftFilled } from "@tabler/icons-react";
 import { IconCaretDownFilled } from "@tabler/icons-react";
-import Image from "next/image";
 
 export const MacbookScroll = ({
   src,
   showGradient,
-  title,
-  badge,
 }: {
   src?: string;
   showGradient?: boolean;
@@ -69,6 +66,7 @@ export const MacbookScroll = ({
     <div
       ref={ref}
       className="min-h-[200vh]  flex flex-col items-center py-0 md:py-80 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50"
+      data-aos="fade-down"
     >
       <motion.h2
         style={{
@@ -77,11 +75,6 @@ export const MacbookScroll = ({
         }}
         className="dark:text-white text-neutral-800 text-3xl font-bold mb-20 text-center"
       >
-        {title || (
-          <span>
-            This Macbook is built with Tailwindcss. <br /> No kidding.
-          </span>
-        )}
       </motion.h2>
       {/* Lid */}
       <Lid
@@ -92,7 +85,7 @@ export const MacbookScroll = ({
         translate={translate}
       />
       {/* Base area */}
-      <div className="h-[22rem] w-[32rem] bg-gray-200 dark:bg-[#272729] rounded-2xl overflow-hidden relative -z-10">
+      <div className="h-[22rem] w-[32rem] bg-[#dfe0e2] dark:bg-[#272729] rounded-2xl overflow-hidden relative -z-10">
         {/* above keyboard bar */}
         <div className="h-10 w-full relative">
           <div className="absolute inset-x-0 mx-auto w-[80%] h-4 bg-[#050505]" />
@@ -113,7 +106,7 @@ export const MacbookScroll = ({
         {showGradient && (
           <div className="h-40 w-full absolute bottom-0 inset-x-0 bg-gradient-to-t dark:from-black from-white via-white dark:via-black to-transparent z-50"></div>
         )}
-        {badge && <div className="absolute bottom-4 left-4">{badge}</div>}
+        {/* {badge && <div className="absolute bottom-4 left-4">{badge}</div>} */}
       </div>
     </div>
   );
@@ -149,7 +142,7 @@ export const Lid = ({
           className="absolute inset-0 bg-[#010101] rounded-lg flex items-center justify-center"
         >
           <span className="text-white">
-            <AceternityLogo />
+            {/* <AceternityLogo /> */}
           </span>
         </div>
       </div>
@@ -165,10 +158,9 @@ export const Lid = ({
         className="h-96 w-[32rem] absolute inset-0 bg-[#010101] rounded-2xl p-2"
       >
         <div className="absolute inset-0 bg-[#272729] rounded-lg" />
-        <Image
+        <img
           src={src as string}
           alt="aceternity logo"
-          fill
           className="object-cover object-left-top absolute rounded-lg inset-0 h-full w-full"
         />
       </motion.div>
