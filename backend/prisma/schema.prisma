@@ -55,6 +55,16 @@ model Logo {
   title String
 }
 
+model Testimonials {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  fullname String
+  vocation String
+  avatar String
+  comment String
+}
+
 model NFT_Creater {
   id String @id @default(uuid())
   createdAt DateTime @default(now()) @map("created_at")

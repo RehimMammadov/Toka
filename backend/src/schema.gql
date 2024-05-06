@@ -18,11 +18,30 @@ type Logo {
   title: String!
 }
 
+type Testimonial {
+  """Example field (placeholder)"""
+  id: String!
+
+  """Fullname of the testimonial"""
+  fullname: String!
+
+  """Vocation of the testimonial"""
+  vocation: String!
+
+  """Avatar of the testimonial"""
+  avatar: String!
+
+  """Comment of the testimonial"""
+  comment: String!
+}
+
 type Query {
   categories: [Category!]!
   category(id: String!): Category!
   logos: [Logo!]!
   logo(id: String!): Logo!
+  testimonials: [Testimonial!]!
+  testimonial(id: String!): Testimonial!
 }
 
 type Mutation {
@@ -32,6 +51,9 @@ type Mutation {
   createLogo(dto: LogoDto!): Logo!
   updateLogo(dto: LogoDto!, id: String!): Logo!
   removeLogo(id: String!): Logo!
+  createTestimonial: Testimonial!
+  updateTestimonial(id: String!): Testimonial!
+  removeTestimonial(id: String!): Testimonial!
 }
 
 input CategoryDto {
