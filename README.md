@@ -15,7 +15,7 @@
   <h2 align="center">⚒️Technologies in the project ⚒️</h2>
   <br/>
   <a href="#">
-  <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg" height="44" alt="typescript logo"  />
+  <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg" height="64" alt="typescript logo"  />
 </a>
 <img width="12" />
 <a href="#">
