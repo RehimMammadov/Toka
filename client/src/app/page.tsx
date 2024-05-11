@@ -9,7 +9,7 @@ import useAOS from "@/components/aos.component";
 import Star from "@/assets/Vector-sparkle-light.png"
 import Deposit from "@/components/deposit.component";
 import Start from "@/components/start.component";
-import { Testimonials } from "@/components/testimonials.component";
+import Testimonials from "@/components/testimonials.component";
 
 export default function Home() {
   useAOS();

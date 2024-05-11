@@ -2,10 +2,12 @@
 
 import Image from "next/image"
 import Chart from "@/assets/wedgt.png"
+import useAOS from "./aos.component"
 
 export default function Deposit() {
+    useAOS();
     return (
-        <div className="w-[75%] mx-auto flex justify-between gap-7 mt-32 pb-24">
+        <div data-aos="fade-down" className="w-[75%] mx-auto flex justify-between gap-7 mt-32 pb-24">
             <div className="text-left">
                 <h6 className="text-[1rem] font-bold text-[#2cbca5]">EARN CRYPTO</h6>
                 <h2 className="text-white text-[43px] font-medium mt-2">Deposit crypto earn interest</h2>

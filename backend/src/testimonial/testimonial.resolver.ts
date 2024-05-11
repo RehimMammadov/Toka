@@ -9,7 +9,7 @@ export class TestimonialResolver {
   constructor(private readonly testimonialService: TestimonialService) {}
 
   @Mutation(() => Testimonial)
-  createTestimonial(dto: TestimonialsDto) {
+  createTestimonial(@Args('dto') dto: TestimonialsDto) {
     return this.testimonialService.create(dto);
   }
 
@@ -24,7 +24,7 @@ export class TestimonialResolver {
   }
 
   @Mutation(() => Testimonial)
-  updateTestimonial(@Args('id', { type: () => String }) id: string, dto: TestimonialsDto ) {
+  updateTestimonial(@Args('id', { type: () => String }) id: string, @Args('dto') dto: TestimonialsDto ) {
     return this.testimonialService.update(id, dto);
   } 
 

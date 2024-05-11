@@ -51,8 +51,8 @@ type Mutation {
   createLogo(dto: LogoDto!): Logo!
   updateLogo(dto: LogoDto!, id: String!): Logo!
   removeLogo(id: String!): Logo!
-  createTestimonial: Testimonial!
-  updateTestimonial(id: String!): Testimonial!
+  createTestimonial(dto: TestimonialsDto!): Testimonial!
+  updateTestimonial(id: String!, dto: TestimonialsDto!): Testimonial!
   removeTestimonial(id: String!): Testimonial!
 }
 
@@ -62,4 +62,11 @@ input CategoryDto {
 
 input LogoDto {
   title: String!
+}
+
+input TestimonialsDto {
+  fullname: String!
+  vocation: String!
+  avatar: String!
+  comment: String!
 }
