@@ -12,5 +12,5 @@ export class Product {
   price: number
 
   @Field(() => Array, { description: 'Example field (placeholder)' })
-  iamges: string[]
+  images: string[]
 }
