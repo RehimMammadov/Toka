@@ -1,16 +1,16 @@
 "use client"
 
-import Navbar from "@/components/navbar.component";
+import Navbar from "@/components/layouts/navbar.component";
 import { MacbookScroll } from "@/components/ui/macbook-scroll";
 import Image from "next/image";
 import Credits from "@/assets/cards-24.png"
 import Hand from "@/assets/white-hand-product-display.png"
-import useAOS from "@/components/aos.component";
+import useAOS from "@/utils/aos.util";
 import Star from "@/assets/Vector-sparkle-light.png"
-import Deposit from "@/components/deposit.component";
-import Start from "@/components/start.component";
-import Testimonials from "@/components/testimonials.component";
-import { Footer } from "@/components/footer.component";
+import Testimonials from "@/components/home-components/testimonials.component";
+import { Footer } from "@/components/layouts/footer.component";
+import Deposit from "@/components/home-components/deposit.component";
+import Start from "@/components/home-components/start.component";
 
 export default function Home() {
   useAOS();
@@ -27,7 +27,7 @@ export default function Home() {
                         <Image width={70} className="mt-10" src={Star} alt="star" />
                       </div>
                   </div>
-                  <Image data-aos="fade-down" src={Credits} alt="Credits" width={500} />
+                  <Image data-aos="fade-down" src={ Credits } alt="Credits" width={500} />
               </div> 
               <Image data-aos="fade-right" width={750} src={Hand} className="absolute bottom-[-170px] right-0" alt="human_hand" />
             <hr className="mt-80" />

@@ -5,26 +5,26 @@ import { PrismaService } from 'prisma/prisma.service';
 @Injectable()
 export class CategoryService {
   constructor(private prismaService: PrismaService) {}
-  create(dto: CategoryDto) {
-    return this.prismaService.category.create({
+  async create(dto: CategoryDto) {
+    return await this.prismaService.category.create({
       data: {
         title: dto.title
       }
     })
   }
 
-  findAll() {
-    return this.prismaService.category.findMany();
+  async findAll() {
+    return await this.prismaService.category.findMany();
   }
 
-  findOne(id: string) {
-    return this.prismaService.category.findUnique({
+  async findOne(id: string) {
+    return await this.prismaService.category.findUnique({
       where: { id }
     })
   }
 
-  update(id: string, dto: CategoryDto) {
-    return this.prismaService.category.update({
+  async update(id: string, dto: CategoryDto) {
+    return await this.prismaService.category.update({
       where: { id },
       data: {
         title: dto.title
@@ -32,8 +32,8 @@ export class CategoryService {
     });
   }
 
-  remove(id: string) {
-    return this.prismaService.category.delete({
+  async remove(id: string) {
+    return await this.prismaService.category.delete({
       where: { id }
     });
   }

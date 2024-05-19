@@ -6,26 +6,26 @@ import { PrismaService } from 'prisma/prisma.service';
 export class LogoService {
   constructor(private prismaService: PrismaService) {}
 
-  create(dto: LogoDto) {
-    return this.prismaService.logo.create({
+  async create(dto: LogoDto) {
+    return await this.prismaService.logo.create({
       data: {
         title: dto.title
       }
     })
   }
 
-  findAll() {
-    return this.prismaService.logo.findMany()
+  async findAll() {
+    return await this.prismaService.logo.findMany()
   }
 
-  findOne(id: string) {
-    return this.prismaService.logo.findUnique({
+  async findOne(id: string) {
+    return await this.prismaService.logo.findUnique({
       where: { id }
     })
   }
 
-  update(id: string, dto: LogoDto) {
-    return this.prismaService.logo.update({
+  async update(id: string, dto: LogoDto) {
+    return await this.prismaService.logo.update({
       where: { id },
       data: {
         title: dto.title
@@ -33,8 +33,8 @@ export class LogoService {
     })
   }
 
-  remove(id: string) {
-    return this.prismaService.logo.delete({
+  async remove(id: string) {
+    return await this.prismaService.logo.delete({
       where: { id }
     })
   }

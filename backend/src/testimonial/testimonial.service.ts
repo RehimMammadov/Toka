@@ -7,8 +7,8 @@ import { TestimonialsDto } from './dto/testimonial.dto';
 export class TestimonialService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  create(dto: TestimonialsDto) {
-    return this.prismaService.testimonials.create({
+  async create(dto: TestimonialsDto) {
+    return await this.prismaService.testimonials.create({
       data: {
         fullname: dto.fullname,
         vocation: dto.vocation,
@@ -18,18 +18,18 @@ export class TestimonialService {
     });
   }
 
-  findAll() {
-    return this.prismaService.testimonials.findMany();
+  async findAll() {
+    return await this.prismaService.testimonials.findMany();
   }
 
-  findOne(id: string) {
-    return this.prismaService.testimonials.findUnique({
+  async findOne(id: string) {
+    return await this.prismaService.testimonials.findUnique({
       where: { id }
     });
   }
 
-  update(id: string, dto: TestimonialsDto) {
-    return this.prismaService.testimonials.update({
+  async update(id: string, dto: TestimonialsDto) {
+    return await this.prismaService.testimonials.update({
       where: { id },
       data: {
         fullname: dto.fullname,
@@ -40,8 +40,8 @@ export class TestimonialService {
     });
   }
 
-  remove(id: string) {
-    return this.prismaService.testimonials.delete({
+  async remove(id: string) {
+    return await this.prismaService.testimonials.delete({
       where: { id }
     });
   }

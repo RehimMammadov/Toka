@@ -70,7 +70,7 @@ model NFT_Creater {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
   fullName String
-  email String
+  email String?
   nft NFT[]
 }
 
@@ -79,7 +79,7 @@ model NFT {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
   title String
-  image String
+  image String[]
   price Int
   creator NFT_Creater? @relation(fields: [createrId], references: [id])
   createrId String

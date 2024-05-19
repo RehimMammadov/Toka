@@ -8,6 +8,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { CategoryModule } from './category/category.module';
 import { LogoModule } from './logo/logo.module';
 import { TestimonialModule } from './testimonial/testimonial.module';
+import { ProductModule } from './product/product.module';
+import { CreatorsModule } from './creators/creators.module';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { TestimonialModule } from './testimonial/testimonial.module';
     CategoryModule,
     LogoModule,
     TestimonialModule,
+    ProductModule,
+    CreatorsModule,
   ],
   controllers: [],
   providers: [],

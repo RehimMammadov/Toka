@@ -1,6 +1,6 @@
 "use client"
 
-import useAOS from "./aos.component"
+import useAOS from "@/utils/aos.util";
 
 export default function Start() {
     useAOS();

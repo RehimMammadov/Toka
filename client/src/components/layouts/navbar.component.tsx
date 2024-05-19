@@ -15,13 +15,18 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { FaRegHeart } from 'react-icons/fa';
 import { BsCart2 } from 'react-icons/bs';
-import { apiUrl } from '../api/api';
+import { apiUrl } from '../../api/api';
 import Link from 'next/link.js';
 import axios from 'axios';
 import { FaChevronDown } from 'react-icons/fa6';
 
+interface ILogo {
+  id: string;
+  title: string[];
+}
+
 export default function Navbar() {
-  const [ logos, setLogos ] = React.useState<any[]>([]);
+  const [ logos, setLogos ] = React.useState<ILogo[]>([]);
   const [ anchorEl, setAnchorEl ] = React.useState<null | HTMLElement>(null);
 
   const open = Boolean(anchorEl);
@@ -58,12 +63,14 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="w-full p-10 pl-32 pr-32 flex justify-between items-center absolute top-0 left-0 bg-[#030811] z-10">
+      <nav className="w-full p-10 px-32 flex justify-between items-center absolute top-0 left-0 bg-[#030811] z-10">
         {logos &&
           logos.map((logo) => (
-            <h5 className="text-3xl font-extrabold text-white" key={logo.id}>
-              {logo.title}
-            </h5>
+            <Link href={"/"}>
+              <h5 className="text-3xl font-extrabold text-white" key={logo.id}>
+                {logo.title}
+              </h5>
+            </Link>
           ))}
         <ul className="flex justify-between gap-7 items-center mt-1">
           <Link className="flex items-center gap-2 text-white font-medium hover:text-[#36bb91] duration-300" href={'/nft'}>

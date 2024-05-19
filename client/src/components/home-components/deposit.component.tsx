@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Chart from "@/assets/wedgt.png"
-import useAOS from "./aos.component"
+import useAOS from "@/utils/aos.util";
 
 export default function Deposit() {
     useAOS();

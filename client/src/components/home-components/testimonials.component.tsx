@@ -2,7 +2,7 @@ import { apiUrl } from "@/api/api";
 import axios from "axios";
 import { useState, useEffect } from "react"
 import { FaStar } from "react-icons/fa";
-import useAOS from "./aos.component";
+import useAOS from "../../utils/aos.util";
 
 export default function Testimonials() {
     const [ testimonials, setTestimonials ] = useState<any[]>([]);
@@ -29,7 +29,7 @@ export default function Testimonials() {
     }
 
     useEffect(() => {
-        fetchTestimonialsData()
+        fetchTestimonialsData();
     }, [])
 
     useAOS();

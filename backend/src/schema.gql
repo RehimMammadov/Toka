@@ -35,6 +35,25 @@ type Testimonial {
   comment: String!
 }
 
+type Product {
+  """Example field (placeholder)"""
+  id: String!
+}
+
+type Creator {
+  """Unique identifier for the creator"""
+  id: String!
+
+  """Full name of the creator"""
+  fullName: String!
+
+  """Email of the creator"""
+  email: String!
+
+  """NFT projects of the creator"""
+  nft: [String!]
+}
+
 type Query {
   categories: [Category!]!
   category(id: String!): Category!
@@ -42,6 +61,9 @@ type Query {
   logo(id: String!): Logo!
   testimonials: [Testimonial!]!
   testimonial(id: String!): Testimonial!
+  product(id: Int!): Product!
+  creators: [Creator!]!
+  creator(id: Int!): Creator!
 }
 
 type Mutation {
@@ -54,6 +76,12 @@ type Mutation {
   createTestimonial(dto: TestimonialsDto!): Testimonial!
   updateTestimonial(id: String!, dto: TestimonialsDto!): Testimonial!
   removeTestimonial(id: String!): Testimonial!
+  createProduct(createProductInput: CreateProductInput!): Product!
+  updateProduct(updateProductInput: UpdateProductInput!): Product!
+  removeProduct(id: Int!): Product!
+  createCreator(dto: CreatorsDto!): Creator!
+  updateCreator(id: Int!, dto: CreatorsDto!): Creator!
+  removeCreator(id: Int!): Creator!
 }
 
 input CategoryDto {
@@ -69,4 +97,21 @@ input TestimonialsDto {
   vocation: String!
   avatar: String!
   comment: String!
+}
+
+input CreateProductInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateProductInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreatorsDto {
+  fullName: String!
+  email: String!
+  nft: [String!]
 }
