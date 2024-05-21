@@ -1,35 +1,40 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { ProductsDto } from './dto/products.dto';
+import { Product } from './entities/product.entity';
 
 @Injectable()
 export class ProductService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async create(creatorId: string, dto: ProductsDto[]) {
+  async create(creatorId: string, dto: ProductsDto[]): Promise<Product[]> {
     const creator = await this.prismaService.nFT_Creater.findUnique({
-        where: { id: creatorId }
+      where: { id: creatorId },
     });
 
     if (!creator) {
-        throw new Error(`Creator with ID ${creatorId} not found`);
+      throw new Error(`Creator with ID ${creatorId} not found`);
     }
 
-    const createdNfts = [];
+    const createdNfts = await Promise.all(
+      dto.map((nftData) =>
+        this.prismaService.nFT.create({
+          data: {
+            title: nftData.title,
+            price: nftData.price,
+            image: { set: nftData.images },
+            creator: { connect: { id: creatorId } },
+          },
+        }),
+      ),
+    );
 
-    for (const nftData of dto) {
-        const createdNft = await this.prismaService.nFT.create({
-            data: {
-                title: nftData.title,
-                price: nftData.price,
-                image: { set: nftData.images }, 
-                creator: { connect: { id: creatorId } }
-            }
-        });
-        createdNfts.push(createdNft);
-    }
-
-    return createdNfts;
+    return createdNfts.map((nft) => ({
+      id: nft.id,
+      title: nft.title,
+      price: nft.price,
+      images: nft.image
+    }));
   }
 
   async findAll() {

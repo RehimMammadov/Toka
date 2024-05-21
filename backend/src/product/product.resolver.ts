@@ -8,8 +8,9 @@ export class ProductResolver {
   constructor(private readonly productService: ProductService) {}
 
   @Mutation(() => Product)
-  createProduct(@Args('dto') dto: ProductsDto[], id: string) {
-    return this.productService.create(id, dto);
+  async create(
+  @Args({ name: 'dto', type: () => [ProductsDto] }) dto: ProductsDto[], @Args('creatorId') creatorId: string) {
+    return this.productService.create(creatorId, dto);
   }
 
   @Query(() => [Product], { name: 'product' })
