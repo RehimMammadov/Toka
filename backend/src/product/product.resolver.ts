@@ -7,13 +7,13 @@ import { ProductsDto } from './dto/products.dto';
 export class ProductResolver {
   constructor(private readonly productService: ProductService) {}
 
-  @Mutation(() => Product)
+  @Mutation(() => Product, { name: 'createProduct' })
   async create(
   @Args({ name: 'dto', type: () => [ProductsDto] }) dto: ProductsDto[], @Args('creatorId') creatorId: string) {
     return this.productService.create(creatorId, dto);
   }
 
-  @Query(() => [Product], { name: 'product' })
+  @Query(() => [Product], { name: 'products' })
   findAll() {
     return this.productService.findAll();
   }
@@ -23,17 +23,17 @@ export class ProductResolver {
     return this.productService.findOne(id);
   }
 
-  @Query(() => [Product], { name: 'product' })
+  @Query(() => [Product], { name: 'byCreator' })
   findByCreator(@Args('id', { type: () => String }) creatorId: string) {
     return this.productService.findOne(creatorId);
   }
 
-  @Mutation(() => Product)
+  @Mutation(() => Product, { name: 'updateProduct' })
   updateProduct(@Args('dto') dto: ProductsDto, @Args('id', { type: () => String }) id: string) {
     return this.productService.update(id, dto);
   }
 
-  @Mutation(() => Product)
+  @Mutation(() => Product, { name: 'removeProduct' })
   removeProduct(@Args('id', { type: () => String }) id: string) {
     return this.productService.remove(id);
   }

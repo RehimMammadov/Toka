@@ -70,7 +70,9 @@ type Query {
   logo(id: String!): Logo!
   testimonials: [Testimonial!]!
   testimonial(id: String!): Testimonial!
-  product(id: String!): [Product!]!
+  products: [Product!]!
+  product(id: String!): Product!
+  byCreator(id: String!): [Product!]!
   creators: [Creator!]!
   creator(id: String!): Creator!
 }
@@ -85,7 +87,7 @@ type Mutation {
   createTestimonial(dto: TestimonialsDto!): Testimonial!
   updateTestimonial(id: String!, dto: TestimonialsDto!): Testimonial!
   removeTestimonial(id: String!): Testimonial!
-  create(dto: [ProductsDto!]!, creatorId: String!): Product!
+  createProduct(dto: [ProductsDto!]!, creatorId: String!): Product!
   updateProduct(dto: ProductsDto!, id: String!): Product!
   removeProduct(id: String!): Product!
   createCreator(dto: CreatorsDto!): Creator!
